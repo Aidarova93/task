@@ -1,0 +1,23 @@
+- hosts: all
+  tasks:
+  - name: install the latest version of Apache
+    yum:
+      name: httpd
+      state: latest
+
+  - name: Start httpd
+    service:
+      name: httpd
+      state: started 
+      enabled: yes
+
+  - name: install unzip
+    yum:
+      name: unzip
+      state: latest 
+
+  - name: Download tamplate
+    unarchive:
+      src: https://www.free-css.com/assets/files/free-css-templates/download/page280/petology.zip
+      dest: /var/www/html
+      remote_src: yes  
